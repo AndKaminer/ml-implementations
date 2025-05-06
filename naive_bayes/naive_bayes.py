@@ -16,18 +16,24 @@ class NaiveBayes:
             self.vars[idx, :] = X_class.var(axis=0)
             self.prior_probs[idx] = X_class.shape[0] / self.n_samples
 
-        print(self.means.shape)
-
     def predict(self, x):
         proportional_probabilities = np.zeros(self.n_classes, dtype=np.float64)
 
         for i in range(self.n_classes):
-            prob = np.log(self.prior_probs[i]) + np.sum(np.log(self.gauss_pdf(x, i)))
+            p1 = np.log(self.prior_probs[i])
+            p2 = np.sum(np.log(self.gauss_pdf(x, i)))
+            prob = p1 + p2
             proportional_probabilities[i] = prob
 
         return np.argmax(proportional_probabilities)
         
-
     def gauss_pdf(self, x, i):
         mean, var = self.means[i], self.vars[i]
-        return np.exp(-np.square(x - mean) / 2 * var) / np.sqrt(2 * var * np.pi)
+        return np.exp(-np.square(x - mean) / (2 * var)) / np.sqrt(2 * var * np.pi)
+
+    def batch_predict(self, X):
+        outputs = np.zeros(X.shape[0])
+        for i, x in enumerate(X):
+            outputs[i] = self.predict(x)
+
+        return outputs

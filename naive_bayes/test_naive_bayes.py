@@ -3,24 +3,28 @@ import kagglehub
 
 import shutil
 import os
+import subprocess
 
 from naive_bayes import NaiveBayes
 
 def main():
     
-    dir_path = kagglehub.dataset_download("quantbruce/real-estate-price-prediction")
-    data_path = os.path.join(dir_path, "Real estate.csv")
-    data = np.genfromtxt(data_path, delimiter=",", skip_header=1)
+    if not os.path.exists('p0_data.txt'):
+        subprocess.run(["wget", "https://raw.githubusercontent.com/cocoxu/CS4650_spring2025_projects/refs/heads/main/p0_data.txt"])
 
-    X = data[:, 3:5] # distance to nearest MRT station, number of convenience stores
-    y = data[:, -1] # house price
+    data = np.loadtxt('p0_data.txt', delimiter=',')
+
+    X = data[:, 0:2]
+    y = data[:, 2]
 
     nb = NaiveBayes()
     nb.fit(X, y)
 
-    print(nb.predict(X[0]))
 
-    # shutil.rmtree(dir_path)
+
+    res = nb.batch_predict(X)
+    correct = np.sum(res == y)
+    print(correct / X.shape[0])
 
 
 if __name__ == "__main__":
