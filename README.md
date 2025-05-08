@@ -13,3 +13,4 @@
 - KNN
 - Decision Tree
 - PCA
+- GMM
