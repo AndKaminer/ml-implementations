@@ -7,9 +7,9 @@
 - Gaussian Naive Bayes
 - Multinomial Naive Bayes
 - Perceptron
+- SVM
 
 ## TODO:
-- SVM
 - KNN
 - Decision Tree
 - PCA
