@@ -1,6 +1,7 @@
 # ML Serving
 
 ## Architecture:
+![Diagram](ML Serving Diagram.png)
 Flask backend serving models. Some frontend where you can upload data to a method.
 Containerize in docker and server in AWS
 
