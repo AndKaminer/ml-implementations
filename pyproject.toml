@@ -1,0 +1,19 @@
+[project]
+name = "ml_serving"
+version = "0.1.0"
+description = "Basic ML model serving with Flask"
+authors = [
+  {name = "Andrew Kaminer", email = "andrewkaminer@gmail.com"}
+]
+readme = "README.md"
+requires-python = ">=3.10"
+dependencies = [
+  "numpy==2.2.2",
+  "scikit-learn==1.6.1",
+  "pandas==2.2.3",
+  "kagglehub==0.3.6",
+]
+
+[build-system]
+requires = ["poetry-core>=2.0.0,<3.0.0"]
+build-backend = "poetry.core.masonry.api"
