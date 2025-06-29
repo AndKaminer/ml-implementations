@@ -1,10 +1,12 @@
 import numpy as np
 
-class KMeans:
+from ..model_base_classes import Model
+
+class KMeans(Model):
     def __init__(self, k):
         self.k = k
 
-    def cluster(self, X, n_iters=10, max_iters=10):
+    def predict(self, X, n_iters=10, max_iters=10):
         maxes_per_dim = np.max(X, axis=0)
         mins_per_dim = np.min(X, axis=0)
 
@@ -74,4 +76,3 @@ class KMeans:
 
     def dist(x1, x2):
         return np.sqrt(np.sum(x1 - x2) ** 2)
-

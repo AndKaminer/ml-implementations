@@ -9,7 +9,7 @@ class KNN:
         self.y = y
         self.clusters = np.unique(y)
 
-    def predict(self, x):
+    def predict(self, X):
         heap = []
 
         for i, point in enumerate(self.X):

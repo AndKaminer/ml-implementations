@@ -1,7 +1,7 @@
 from sklearn.datasets import load_iris
 import numpy as np
 
-from knn import KNN
+from .knn import KNN
 
 def get_data():
     X, y = load_iris(return_X_y=True)
@@ -10,7 +10,7 @@ def get_data():
    
     return X, y
 
-def main():
+def test_knn():
     X, y = get_data()
 
     nearest = KNN(X, y, 10)
@@ -18,7 +18,8 @@ def main():
     res = nearest.batch_predict(X)
     print(res)
     print(y)
-    print(np.sum(res == y) / y.shape[0])
+    assert (np.sum(res == y) / y.shape[0]) >= .7
+
 
 if __name__ == "__main__":
-    main()
+    test_knn()

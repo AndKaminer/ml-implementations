@@ -2,7 +2,10 @@ import numpy as np
 import matplotlib.pyplot as plt
 
 class LinearRegression:
-    
+
+    def __init__(self, X, y, ALPHA, N_ITER, print_iterations, feature_plots=False):
+        self.beta = self.gradient_descent(X, y, ALPHA, N_ITER, print_iterations, feature_plots)
+
     def cost_function(self, beta, X, y):
         e = y - np.dot(X, beta)
         return np.mean(np.dot(e.T, e))
