@@ -12,6 +12,7 @@ dependencies = [
   "scikit-learn==1.6.1",
   "pandas==2.2.3",
   "kagglehub==0.3.6",
+  "flask>=3.0.0"
 ]
 
 [build-system]
