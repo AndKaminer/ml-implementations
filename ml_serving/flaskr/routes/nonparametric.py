@@ -8,4 +8,13 @@ def register_routes(bp):
     def predict():
         data = request.get_json()
         input_data = validate_input(data, InferenceInput)
-        return str(input_data.model_type) + " " + str(input_data.features)
+        try:
+            model = ModelDirectory.get_model(input_data.model_type, input_data.model_id)
+            model_input = np.array(input_data.features)
+            y = model.predict(model_input)
+            return str(y)
+
+        except Exception as e:
+            print(e)
+
+            return "failure"

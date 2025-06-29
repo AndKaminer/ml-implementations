@@ -8,7 +8,7 @@ class ModelDirectory:
     cls.model_type_mapping = {} # model_type -> ({model_id -> model} if parametric else model)
     
     @classmethod
-    def __get_model(cls, model_type, model_id=0):
+    def get_model(cls, model_type, model_id=0):
         if model_type not in cls.model_type_mapping:
             raise ModelDirectoryError("Invalid model type")
     
@@ -54,3 +54,7 @@ class ModelDirectory:
             return list(dict_output.keys())
         else:
             return [1]
+
+
+def init_model_directory():
+    ModelDirectory.register_model("kmeans", KMeans(3))
