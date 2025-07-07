@@ -3,8 +3,6 @@ import os
 
 from flask import Flask, render_template
 
-from .model_directory import init_model_directory
-
 def create_app(test_config=None):
     app = Flask(__name__, instance_relative_config=True)
     os.makedirs(app.instance_path, exist_ok=True)
@@ -12,12 +10,10 @@ def create_app(test_config=None):
     app.secret_key = "1234"
 
     from .routes import bp as routes_bp
-    from .routes import parametric
-    from .routes import nonparametric
-    parametric.register_routes(routes_bp)
-    nonparametric.register_routes(routes_bp)
+    from .routes import model
+    from .routes import health
+    model.register_routes(routes_bp)
+    health.register_routes(routes_bp)
     app.register_blueprint(routes_bp)
-
-    init_model_directory()
 
     return app

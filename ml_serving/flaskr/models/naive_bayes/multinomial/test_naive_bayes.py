@@ -7,7 +7,7 @@ from nltk.corpus import stopwords
 import string
 import os
 
-from naive_bayes import NaiveBayes
+from naive_bayes import MultiNaiveBayes
 
 
 def get_data():
@@ -32,7 +32,7 @@ def get_data():
 def main():
     xtrain, ytrain, xtest, ytest = get_data()
     
-    nb = NaiveBayes()
+    nb = MultiNaiveBayes()
     nb.fit(xtrain, ytrain)
     
     train_res = nb.batch_predict(xtrain)

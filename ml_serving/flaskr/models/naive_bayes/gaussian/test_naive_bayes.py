@@ -5,7 +5,7 @@ import shutil
 import os
 import subprocess
 
-from naive_bayes import NaiveBayes
+from naive_bayes import GaussianNaiveBayes
 
 def main():
     
@@ -17,7 +17,7 @@ def main():
     X = data[:, 0:2]
     y = data[:, 2]
 
-    nb = NaiveBayes()
+    nb = GaussianNaiveBayes()
     nb.fit(X, y)
 
 
