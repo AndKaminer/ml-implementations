@@ -6,6 +6,17 @@ class LinearRegression:
     def __init__(self, X, y, ALPHA, N_ITER, print_iterations, feature_plots=False):
         self.beta = self.gradient_descent(X, y, ALPHA, N_ITER, print_iterations, feature_plots)
 
+    def predict(self, x):
+        bias = self.beta[0]
+        return bias + np.dot(self.beta[1:], x)
+
+    def batch_predict(self, X):
+        outputs = np.zeros(X.shape[0])
+        for i, x in enumerate(x):
+            outputs[i] = self.predict(x)
+
+        return outputs
+
     def cost_function(self, beta, X, y):
         e = y - np.dot(X, beta)
         return np.mean(np.dot(e.T, e))
