@@ -1,6 +1,13 @@
 import numpy as np
 
 class LogisticRegression:
+
+    def __init__(self, X, y, alpha, max_iterations, print_iterations):
+        self.theta = np.zeros(X.shape[1])
+        self.theta = gradient_descent(self.theta, X, y, alpha, max_iterations,
+                                      print_iterations)
+        
+
     def sigmoid(z):
         return np.where(z >= 0, 1 / (1 + np.exp(-z)), np.exp(z) / (1 + np.exp(z)))
 
@@ -34,7 +41,8 @@ class LogisticRegression:
 
         return theta
 
-    def predict(theta, X):
+    def predict(X):
+        theta = self.theta
         epsilon = 1e-10
         X = np.hstack((X, np.ones((X.shape[0], 1))))
         probabilities = np.clip(LogisticRegression.sigmoid(np.dot(X, theta)), epsilon, 1 - epsilon)
