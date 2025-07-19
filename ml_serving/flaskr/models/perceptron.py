@@ -1,8 +1,13 @@
 import numpy as np
+from numpy.typing import NDArray
 
 class Perceptron:
 
-    def fit(self, X, y, max_iters):
+    def __init__(self, X: NDArray[np.float64], y: NDArray[np.int64], max_iters: int) -> None:
+        self.n_examples: int
+        self.n_features: int
+        self.w: NDArray[np.float64]
+
         self.n_examples, self.n_features = X.shape
         self.w = np.zeros(self.n_features, dtype=np.float64)
         iterations = 0
@@ -20,15 +25,12 @@ class Perceptron:
                     self.w -= x
                     success = False
 
-    def predict(self, x):
-        if np.dot(x, self.w) > 0:
-            return 1
-        else:
-            return 0
+    def predict(self, x: NDArray[np.float64]) -> int:
+        return 1 if np.dot(x, self.w) > 0 else 0
 
-    def batch_predict(self, X):
-        outputs = np.zeros(X.shape[0])
+    def batch_predict(self, X: NDArray[np.float64]) -> NDArray[np.int64]:
+        outputs = np.zeros(X.shape[0], dtype=np.int64)
         for i, x in enumerate(X):
             outputs[i] = self.predict(x)
-
         return outputs
+
