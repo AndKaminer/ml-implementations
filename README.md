@@ -1,6 +1,5 @@
 # ML Serving
 
-## About
 This repository is a lightweight api for ML model serving. It started out as
 a collection of machine learning models implemented from scratch in numpy, built
 as an interesting learning exercise, but I decided to take it a little bit further.
@@ -13,8 +12,8 @@ backend infrastructure, feel free to take a look around!
 ### Architecture:
 ![Diagram](MLServingDiagram.png)
 Flask backend serving models through various API endpoints. I may or may not
-add in a frontend. Originally, I was going to serve from ECS, but I went with
-Elastic Beanstalk.
+add in a frontend. Originally, I was going to serve from ECR, but I went with
+Elastic Beanstalk (mostly because I realized that's not what ECR does).
 
 ### Flask
 Flask is a lightweight python webserver. I've used it before, and there's no
