@@ -1,0 +1,5 @@
+curl -X POST http://localhost:5000/register   -H "Content-Type: application/json"   -d '{"model_id": 1, "model_type": "kmeans", "kwargs": {"k": 3}}'
+
+curl -X POST http://localhost:5000/list -H "Content-Type: application/json" -d '{"model_type": "kmeans"}'
+
+
