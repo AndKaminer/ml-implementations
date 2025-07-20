@@ -3,7 +3,7 @@ provider "aws" {
 }
 
 resource "aws_s3_bucket" "app_bucket" {
-  bucket = "${var.app_name}-bucket-${random_id.suffix.hex}"
+  bucket = "${var.app_name}-deployment-bucket"
   force_destroy = true
 }
 
