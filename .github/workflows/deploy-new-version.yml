@@ -6,6 +6,7 @@ on:
 
 jobs:
   deploy:
+    environment: "AWS Deploy Environment"
     name: Deploy to EB
     runs-on: ubuntu-latest
 
