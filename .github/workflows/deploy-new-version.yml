@@ -14,7 +14,6 @@ jobs:
       EB_APPLICATION_NAME: lightweight-ml-serving-api
       EB_ENVIRONMENT_NAME: lightweight-ml-serving-api-env
       S3_BUCKET: lightweight-ml-serving-api-deployment-bucket
-      ZIP_FILE: app.zip
 
     steps:
       - name: Checkout code
