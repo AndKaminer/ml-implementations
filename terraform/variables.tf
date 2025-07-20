@@ -3,7 +3,7 @@ variable "region" {
 }
 
 variable "app_name" {
-  default = "Lightweight ML Serving API"
+  default = "lightweight-ml-serving-api"
 }
 
 variable "app_zip_path" {
