@@ -43,6 +43,7 @@ resource "aws_elastic_beanstalk_environment" "env" {
   application         = aws_elastic_beanstalk_application.app.name
   solution_stack_name = "64bit Amazon Linux 2023 v4.6.1 running Docker"
   version_label       = aws_elastic_beanstalk_application_version.version.name
+  cname_prefix        = "${var.cname_prefix}"
 
   setting {
     namespace = "aws:autoscaling:launchconfiguration"
@@ -87,5 +88,3 @@ resource "aws_iam_instance_profile" "eb_instance_profile" {
   name = "${var.app_name}-instance-profile"
   role = aws_iam_role.eb_instance_role.name
 }
-
-

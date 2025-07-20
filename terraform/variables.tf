@@ -10,3 +10,7 @@ variable "app_zip_path" {
   description = "Path to your zipped application bundle"
   type        = string
 }
+
+variable "cname_prefix" {
+  default = "andrew-kaminer-lightweight-ml-serving-api"
+}

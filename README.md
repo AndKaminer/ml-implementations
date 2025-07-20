@@ -7,6 +7,10 @@ I definitely wouldn't recommend using this for anything serious. It's likely to
 break! But, it was a great exercise, and if you're interested in learning about
 backend infrastructure, feel free to take a look around!
 
+## API
+You can query the API at [this link](http://andrew-kaminer-lightweight-ml-serving-api.us-east-1.elasticbeanstalk.com/),
+if you'd like.
+
 ## How it's Built
 
 ### Architecture:
