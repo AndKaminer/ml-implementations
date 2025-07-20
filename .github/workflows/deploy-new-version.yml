@@ -2,19 +2,18 @@ name: Deploy to Elastic Beanstalk
 
 on:
   push:
-    branches: [main]
 
 jobs:
   deploy:
+    environment: "AWS Deploy Environment"
     name: Deploy to EB
     runs-on: ubuntu-latest
 
     env:
       AWS_REGION: us-east-1
       EB_APPLICATION_NAME: lightweight-ml-serving-api
-      EB_ENVIRONMENT_NAME: ${EB_APPLICATION_NAME}-env
-      S3_BUCKET: ${EB_APPLICATION_NAME}-deployment-bucket
-      ZIP_FILE: app.zip
+      EB_ENVIRONMENT_NAME: lightweight-ml-serving-api-env
+      S3_BUCKET: lightweight-ml-serving-api-deployment-bucket
 
     steps:
       - name: Checkout code
@@ -25,7 +24,7 @@ jobs:
         with:
           aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
           aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
-          aws-region: ${{ env.AWS_REGION }}
+          aws-region: ${{ vars.AWS_DEFAULT_REGION }}
 
       - name: Generate version label
         id: vars

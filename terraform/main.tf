@@ -1,3 +1,12 @@
+terraform {
+  backend "s3" {
+    bucket  = "lightweight-ml-serving-api-terraform-state-bucket"
+    key     = "envs/dev/terraform.tfstate"
+    region  = "us-east-1"
+    encrypt = true
+  }
+}
+
 provider "aws" {
   region = var.region
 }
@@ -25,8 +34,8 @@ resource "aws_elastic_beanstalk_application" "app" {
 resource "aws_elastic_beanstalk_application_version" "version" {
   name        = "${var.app_name}-v${timestamp()}"
   application = aws_elastic_beanstalk_application.app.name
-  bucket      = aws_s3_bucket.app_bucket.id
-  key         = "app.zip"
+  bucket      = aws_s3_object.app_zip.bucket
+  key         = aws_s3_object.app_zip.key
 }
 
 resource "aws_elastic_beanstalk_environment" "env" {
